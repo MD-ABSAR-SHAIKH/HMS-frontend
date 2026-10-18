@@ -13,13 +13,18 @@ const AboutUs = () => {
               Learn More About Us | ZeeCare Medical Institute
             </h1>
             <p className="mt-4 sm:mt-6 lg:mt-8 text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              perferendis amet molestiae cum sapiente perferendis aperiam dolor
-              iure amet molestiae cum sapiente perferendis aperia dolor iure
-              amet molestiae cum sapiente perferendis aperiam dolor iure amet
-              molestiae cum sapiente voluptatibus rerum quo porro a vel,
-              possimus corrupti temporibus eligendi quos, quia fugit? hello sir
-              what are you doing right now.
+              ZeeCare Medical Institute is dedicated to making quality
+              healthcare simple, accessible and affordable for everyone. Our
+              team of experienced doctors, nurses and support staff works
+              across Pediatrics, Orthopedics, Cardiology, Neurology, Oncology
+              and Radiology to give every patient accurate diagnosis and
+              compassionate treatment.
+            </p>
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700">
+              With modern equipment, clean and comfortable facilities, and an
+              easy online appointment system, we save you time and keep your
+              care organized from the first visit to follow-up. Your health,
+              comfort and trust are at the center of everything we do.
             </p>
           </div>
 
