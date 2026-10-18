@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../main";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+const inputClass =
+  "w-full min-w-0 p-3 text-sm sm:text-base border border-gray-400 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500";
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated, url } = useContext(Context);
@@ -10,14 +13,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  console.log(isAuthenticated);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
         "https://hms-backend-czxa.onrender.com/api/v1/user/login",
-        // `${url}/api/v1/user/login`,
         {
           email,
           password,
@@ -33,61 +34,63 @@ const Login = () => {
       toast.success(response.data.message);
       navigate("/");
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || error.message);
     }
   };
+
   if (isAuthenticated) {
-    return navigate("/");
+    return <Navigate to="/" />;
   }
 
   return (
-    <div className="flex justify-center items-center h-96 flex-col bg-slate-300">
-      <h1 className="font-bold text-xl my-2">Sign In</h1>
-      <p className="text-gray-600 p-2">Please Login To Continue</p>{" "}
-      <form
-        onSubmit={handleLogin}
-        className="flex justify-center items-center flex-col gap-4 w-full"
-      >
-        <input
-          className="p-2 w-96 border-black rounded-sm"
-          type="email"
-          value={email}
-          placeholder="email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <input
-          className="p-2 w-96 border-black rounded-sm"
-          type="text"
-          value={password}
-          placeholder="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          className="p-2 w-96 border-black rounded-sm"
-          type="text"
-          value={confirmPassword}
-          placeholder="confirm password"
-          onChange={(e) => {
-            setConfirmPassword(e.target.value);
-          }}
-        />
-        <div className="flex justify-center items-center">
-          <p className="text-gray-600 p-2">Not Registered?</p>
-          <Link to={"/register"} className="text-blue-700">
-            Register Now
-          </Link>
-        </div>
-        <button
-          type="submit"
-          className="bg-black p-2 px-6 font-bold text-white rounded-full"
+    <div className="w-full min-h-[70vh] flex items-center justify-center bg-slate-300 px-4 py-8 sm:py-12">
+      <div className="w-full max-w-md flex flex-col items-center">
+        <h1 className="font-bold text-xl sm:text-2xl my-2">Sign In</h1>
+        <p className="text-gray-600 text-sm sm:text-base p-2 text-center">
+          Please Login To Continue
+        </p>
+
+        <form
+          onSubmit={handleLogin}
+          className="w-full flex flex-col items-center gap-4"
         >
-          Login
-        </button>
-      </form>
+          <input
+            className={inputClass}
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className={inputClass}
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            className={inputClass}
+            type="password"
+            value={confirmPassword}
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+
+          <div className="flex flex-wrap justify-center items-center text-sm sm:text-base">
+            <p className="text-gray-600 p-2">Not Registered?</p>
+            <Link to="/register" className="text-blue-700">
+              Register Now
+            </Link>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full sm:w-auto bg-black py-3 px-8 font-bold text-white rounded-full"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

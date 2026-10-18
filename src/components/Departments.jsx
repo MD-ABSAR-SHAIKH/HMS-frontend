@@ -83,8 +83,6 @@
 //     </div>
 //   );
 // };
-
-// export default Department;
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -126,23 +124,44 @@ const Department = () => {
   };
 
   return (
-    <div className="px-6">
-      <h2 className="text-center text-2xl font-bold my-4">Departments</h2>
-      <Carousel responsive={responsive} removeArrowOnDeviceType={["small"]}>
-        {departmentsArray.map((depart, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <div className="text-center font-semibold mb-2">{depart.name}</div>
-            <div className="h-64 w-full flex justify-center items-center">
-              <img
-                src={depart.imageUrl}
-                alt={depart.name}
-                className="object-contain h-full w-full"
-              />
+    <section className="w-full max-w-full overflow-x-clip px-4 py-6 sm:px-6 lg:px-8">
+      <h2 className="my-5 text-center text-2xl font-bold sm:text-3xl">
+        Departments
+      </h2>
+
+      <div className="mx-auto w-full max-w-7xl">
+        <Carousel
+          responsive={responsive}
+          removeArrowOnDeviceType={["small"]}
+          swipeable
+          draggable
+          infinite
+          keyBoardControl
+          containerClass="department-carousel"
+          itemClass="px-2 sm:px-3"
+        >
+          {departmentsArray.map((depart) => (
+            <div
+              key={depart.name}
+              className="flex h-full min-w-0 flex-col items-center rounded-lg p-3"
+            >
+              <h3 className="mb-3 text-center text-base font-semibold sm:text-lg">
+                {depart.name}
+              </h3>
+
+              <div className="flex h-52 w-full items-center justify-center sm:h-56 md:h-60 lg:h-64">
+                <img
+                  src={depart.imageUrl}
+                  alt={depart.name}
+                  loading="lazy"
+                  className="h-full w-full object-contain"
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </Carousel>
-    </div>
+          ))}
+        </Carousel>
+      </div>
+    </section>
   );
 };
 

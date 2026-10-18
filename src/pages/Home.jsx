@@ -3,20 +3,19 @@ import Hero from "../components/Hero";
 import Biography from "../components/Biography";
 import Departments from "../components/Departments";
 import MessageForm from "../components/MessageForm";
-// Page par jo dikhta hai wo component hai.
 
 const Home = () => {
   return (
-    <div>
+    <div className="w-full overflow-x-hidden">
       <Hero
-        title={
-          "Welcome to ZeeCare Medical Institute | Your Trusted Healthcare Provider!"
-        }
-        imageUrl={"./hero.png"}
+        title="Welcome to ZeeCare Medical Institute | Your Trusted Healthcare Provider!"
+        imageUrl="/hero.png"
       />
-      <Biography imageUrl={"./about.png"} />
-      <Departments />
-      <MessageForm />
+      <div className="max-w-7xl mx-auto flex flex-col gap-6 md:gap-10 py-2 md:py-6">
+        <Biography imageUrl="/about.png" />
+        <Departments />
+        <MessageForm />
+      </div>
     </div>
   );
 };

@@ -3,26 +3,40 @@ import Biography from "../components/Biography";
 
 const AboutUs = () => {
   return (
-    <div className="px-8">
-      <div className="flex gap-20">
-        <div className="w-[60%] flex justify-center items-center flex-col">
-          <h1 className="text-4xl font-extrabold">
-            <p>Learn More About Us | ZeeCare Medical Institute</p>
-          </h1>
-          <p className="text-xl mt-12">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.perferendis
-            amet molestiae cum sapiente perferendis aperiam dolor iure amet
-            molestiae cum sapiente perferendis aperia dolor iure amet molestiae
-            cum sapiente perferendis aperiam dolor iure amet molestiae cum
-            sapiente voluptatibus rerum quo porro a vel,possimus corrupti
-            temporibus eligendi quos, quia fugit?hello sir what are you doing
-            right now.
-          </p>
+    <div className="w-full overflow-x-hidden">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 md:pt-6">
+        {/* Intro section */}
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 lg:gap-16">
+          {/* Text */}
+          <div className="w-full min-w-0 md:w-3/5 flex flex-col">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug break-words">
+              Learn More About Us | ZeeCare Medical Institute
+            </h1>
+            <p className="mt-4 sm:mt-6 lg:mt-8 text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              perferendis amet molestiae cum sapiente perferendis aperiam dolor
+              iure amet molestiae cum sapiente perferendis aperia dolor iure
+              amet molestiae cum sapiente perferendis aperiam dolor iure amet
+              molestiae cum sapiente voluptatibus rerum quo porro a vel,
+              possimus corrupti temporibus eligendi quos, quia fugit? hello sir
+              what are you doing right now.
+            </p>
+          </div>
+
+          {/* Image */}
+          <div className="w-full min-w-0 md:w-2/5 flex justify-center">
+            <img
+              src="/about.png"
+              alt="about ZeeCare"
+              className="w-full h-auto max-w-sm md:max-w-full object-contain"
+            />
+          </div>
         </div>
-        <img src="./about.png" alt="hero" className="w-1/2" />
-      </div>
-      <div className="mt-14">
-        <Biography imageUrl={"./whoweare.png"} />
+
+        {/* Biography */}
+        <div className="mt-8 md:mt-14">
+          <Biography imageUrl="/whoweare.png" />
+        </div>
       </div>
     </div>
   );
